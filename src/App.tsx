@@ -2,9 +2,11 @@ import React from 'react';
 import logo from './logo.svg';
 import profileDummyImg from './assets/dist/img/user4-128x128.jpg';
 import { Navbar, Container, Row, Col, Nav, Accordion, Card, ListGroup } from 'react-bootstrap';
-import { Link, Router } from 'react-router-dom';
+import { Link, Route, BrowserRouter, Switch } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
+import Dashboard from './components/dashboard/Dashboard';
+import UserList from './components/user/UserList';
 
 class App extends React.Component<{}, { height: any, topHeaderHeight: any, mainPartHeight: any }> {
 
@@ -51,7 +53,7 @@ class App extends React.Component<{}, { height: any, topHeaderHeight: any, mainP
           </Container>
         </Navbar>
         <Container fluid>
-          <Router>
+          <BrowserRouter>
             <Row>
               <Col md={2} style={jkl} className="slide-panel" >
 
@@ -65,13 +67,13 @@ class App extends React.Component<{}, { height: any, topHeaderHeight: any, mainP
                         <Accordion.Body className="p-0">
                           <ListGroup >
                             {/* defaultActiveKey="#link1" */}
-                            <ListGroup.Item href="#link1">
-                              <Link to="/link">Link 1</Link>
+                            <ListGroup.Item href="/">
+                              <Link to="/">Home</Link>
                             </ListGroup.Item>
-                            <ListGroup.Item action href="#link2">
-                              Link 2
+                            <ListGroup.Item href="/users-list">
+                              <Link to="/users-list">User Management</Link>
                             </ListGroup.Item>
-                            <ListGroup.Item action href="#link3">
+                            <ListGroup.Item href="#!">
                               Link 3
                             </ListGroup.Item>
                           </ListGroup>
@@ -81,7 +83,7 @@ class App extends React.Component<{}, { height: any, topHeaderHeight: any, mainP
                         <Accordion.Header>Users Management</Accordion.Header>
                         <Accordion.Body>
                           <Nav color="red" defaultActiveKey="/home" className="flex-column">
-                            <Nav.Link href="/home">Active</Nav.Link>
+                            <Nav.Link href="/">Active</Nav.Link>
                             <Nav.Link eventKey="link-1">Link</Nav.Link>
                             <Nav.Link eventKey="link-2">Link</Nav.Link>
                             <Nav.Link eventKey="disabled" disabled>
@@ -96,13 +98,17 @@ class App extends React.Component<{}, { height: any, topHeaderHeight: any, mainP
               </Col>
               <Col md={10} style={{ height: this.state.height, overflow: "auto", marginTop: this.state.topHeaderHeight }}>
 
-
-                {Array(100).fill("hello").map((ar, ix) => {
-                  return <React.Fragment>{ar}{ix + 1}<br /></React.Fragment>;
-                })}
+                <Switch>
+                  <Route exact path="/">
+                    <Dashboard />
+                  </Route>
+                  <Route exact path="/users-list">
+                    <UserList />
+                  </Route>
+                </Switch>
               </Col>
             </Row>
-          </Router>
+          </BrowserRouter>
         </Container>
       </React.Fragment>
     )
