@@ -115,9 +115,41 @@ div.col-xs-9 {
     border-top-right-radius: 0;
 }
 
-.slide-panel .list-group-item.active a {
-    color: #fff;
+.slide-panel .list-group a {
+    text-decoration: none;
 }
+
+.login-form {
+    width: 340px;
+    margin: 50px auto;
+}
+
+.login-form form {
+    margin-bottom: 15px;
+    background: #f7f7f7;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+}
+
+.login-form h2 {
+    margin: 0 0 15px;
+}
+
+.login-form .form-control,
+.login-form .btn {
+    min-height: 38px;
+    border-radius: 2px;
+}
+
+.login-form .btn {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+
+/* .slide-panel .list-group-item.active a {
+    color: #fff;
+} */
 
 @keyframes App-logo-spin {
     from {

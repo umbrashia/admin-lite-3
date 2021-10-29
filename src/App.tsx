@@ -5,8 +5,8 @@ import { Navbar, Container, Row, Col, Nav, Accordion, Card, ListGroup } from 're
 import { Link, Route, BrowserRouter, Switch } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
-import Dashboard from './components/dashboard/Dashboard';
 import UserList from './components/user/UserList';
+import Home from './components/home/Home';
 
 class App extends React.Component<{}, { height: any, topHeaderHeight: any, mainPartHeight: any }> {
 
@@ -67,12 +67,16 @@ class App extends React.Component<{}, { height: any, topHeaderHeight: any, mainP
                         <Accordion.Body className="p-0">
                           <ListGroup >
                             {/* defaultActiveKey="#link1" */}
-                            <ListGroup.Item href="/">
-                              <Link to="/">Home</Link>
-                            </ListGroup.Item>
-                            <ListGroup.Item href="/users-list">
-                              <Link to="/users-list">User Management</Link>
-                            </ListGroup.Item>
+                            <Link to="/">
+                              <ListGroup.Item href="/">
+                                Home
+                              </ListGroup.Item>
+                            </Link>
+                            <Link to="/users-list">
+                              <ListGroup.Item href="/users-list">
+                                User Management
+                              </ListGroup.Item>
+                            </Link>
                             <ListGroup.Item href="#!">
                               Link 3
                             </ListGroup.Item>
@@ -100,7 +104,7 @@ class App extends React.Component<{}, { height: any, topHeaderHeight: any, mainP
 
                 <Switch>
                   <Route exact path="/">
-                    <Dashboard />
+                    <Home />
                   </Route>
                   <Route exact path="/users-list">
                     <UserList />
