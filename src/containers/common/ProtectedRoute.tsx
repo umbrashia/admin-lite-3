@@ -11,19 +11,10 @@ class ProtectedRoute extends React.Component<IPropProtectedRoute, { [key: keyof 
         super(props)
     }
     render() {
-        return (
-            <Route {...this.props.rest} render={({ location }) => {
-                localStorage.getItem("token") ? (this.props.children) : (<Redirect
-                    to={
-                        {
-                            pathname: "/login", state: {
-                                from: location
-                            }
-                        }} />);
-            }} >
-
-            </Route>
-        );
+        //@ts-nocheck
+        return (<Route {...this.props.rest} render={({ location }) =>
+         (localStorage.getItem("token") ? (this.props.children) : (<Redirect to={{ pathname: "/login", state: { from: location } }} />))
+        } />);
     }
 
 }
