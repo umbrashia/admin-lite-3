@@ -7,9 +7,7 @@ export interface IPropProtectedRoute extends RouteProps {
 }
 
 class ProtectedRoute extends React.Component<IPropProtectedRoute, { [key: keyof any]: any }> {
-    constructor(props: any) {
-        super(props)
-    }
+   
     render() {
         //@ts-nocheck
         return (<Route {...this.props.rest} render={({ location }) =>

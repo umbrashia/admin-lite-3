@@ -119,6 +119,10 @@ div.col-xs-9 {
     text-decoration: none;
 }
 
+.slide-panel .accordion-header button svg {
+    margin-right: 10px;
+}
+
 .login-form {
     width: 400px;
     margin: 50px auto;

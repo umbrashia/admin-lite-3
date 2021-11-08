@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Route, BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
 import Dashboard from './components/dashboard/Dashboard';
 import Login from './components/login/Login';
 import ProtectedRoute from './containers/common/ProtectedRoute';
@@ -21,7 +21,6 @@ class App extends React.Component<{}, { height: any, topHeaderHeight: any, mainP
   }
 
   render() {
-    const jkl = { height: this.state.height, top: this.state.topHeaderHeight };
     return (
       <Router>
         <Switch>
