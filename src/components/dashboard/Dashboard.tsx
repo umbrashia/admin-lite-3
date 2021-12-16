@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { Route, Switch } from 'react-router-dom';
-import Home from '../home/Home';
-import UserList from '../user/UserList';
+
 import MyRightNavigation from '../../containers/sections/MyRightNavigation';
 import MyHeaderNavigation from '../../containers/sections/MyHeaderNavigation';
-
+const Home = lazy<any>(() => import("../home/Home"));
+const UserList = lazy<any>(() => import("../user/UserList"));
 
 
 
@@ -36,11 +36,12 @@ class Dashboard extends React.Component<{}, { height: any, topHeaderHeight: any,
                 <MyHeaderNavigation />
                 <Container fluid>
                     <Row>
-                        <Col md={2} style={jkl} className="slide-panel" >
+                        <Col lg={2} md={3} sm={4} style={jkl} className="slide-panel" >
                             <MyRightNavigation />
                         </Col>
-                        <Col md={10} style={{ height: this.state.height, overflow: "auto", marginTop: this.state.topHeaderHeight }}>
-                            <Switch>
+                        <Col lg={10} md={9} sm={8} style={{ height: this.state.height, overflow: "auto", marginTop: this.state.topHeaderHeight }}>
+                            <Suspense fallback={<span>loading</span>}>
+                                <Switch>
                                 <Route exact path="/">
                                     <Home />
                                 </Route>
@@ -48,6 +49,7 @@ class Dashboard extends React.Component<{}, { height: any, topHeaderHeight: any,
                                     <UserList />
                                 </Route>
                             </Switch>
+                            </Suspense>
                         </Col>
                     </Row>
                 </Container>
