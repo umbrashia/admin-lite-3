@@ -1,5 +1,5 @@
 import logo from '../../logo.svg';
-import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { FC, ReactElement } from "react";
 import { Container, Navbar } from "react-bootstrap";
@@ -9,7 +9,10 @@ const MyHeaderNavigation: FC<{ [key: keyof any]: any }> = (props: any): ReactEle
         <Navbar className="header-nav" bg="dark" variant="dark" fixed="top">
             {/* fixed="top" */}
             <Container fluid>
-                <Navbar.Brand href="#home">
+                <Navbar.Brand href="">
+                    <FontAwesomeIcon icon={faBars} />{' '}
+                </Navbar.Brand>
+                <Navbar.Brand href="">
                     <img
                         alt=""
                         src={logo}
