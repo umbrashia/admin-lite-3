@@ -4,15 +4,18 @@ import { Route, Switch } from 'react-router-dom';
 
 import MyRightNavigation from '../../containers/sections/MyRightNavigation';
 import MyHeaderNavigation from '../../containers/sections/MyHeaderNavigation';
+import { RootState } from '../../store/store';
+import { connect } from 'react-redux';
+import { ICommonDashboard } from '../../store/slices/commonDashboardSlice';
 const Home = lazy<any>(() => import("../home/Home"));
 const UserList = lazy<any>(() => import("../user/UserList"));
 
 
 
 
-class Dashboard extends React.Component<{}, { height: any, topHeaderHeight: any, mainPartHeight: any }> {
+class Dashboard extends React.Component<{localCommonDashboardData:ICommonDashboard}, {[key: keyof any]: any},{[key: keyof any]: any}> {
 
-    constructor(props: any) {
+    constructor(props:any) {
         super(props);
         this.state = {
             height: 0,
@@ -30,15 +33,18 @@ class Dashboard extends React.Component<{}, { height: any, topHeaderHeight: any,
     }
 
     render() {
+        
         const jkl = { height: this.state.height, top: this.state.topHeaderHeight };
         return (
             <React.Fragment>
                 <MyHeaderNavigation />
                 <Container fluid>
                     <Row>
+                        {this.props.localCommonDashboardData.mobileMenuToggle && (
                         <Col lg={2} md={3} sm={4} style={jkl} className="slide-panel" >
                             <MyRightNavigation />
                         </Col>
+                        )}
                         <Col lg={10} md={9} sm={8} style={{ height: this.state.height, overflow: "auto", marginTop: this.state.topHeaderHeight }}>
                             <Suspense fallback={<span>loading</span>}>
                                 <Switch>
@@ -59,4 +65,6 @@ class Dashboard extends React.Component<{}, { height: any, topHeaderHeight: any,
 }
 
 
-export default Dashboard;
+export default connect((state:RootState)=>({
+    localCommonDashboardData:state.commonDashboard
+}))(Dashboard);

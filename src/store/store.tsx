@@ -1,7 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit"
+import commonDashboardReducer from "./slices/commonDashboardSlice"
 
 export const store:any = configureStore({
-    reducer: {},
+    reducer: {
+      commonDashboard:commonDashboardReducer
+    },
   })
   
   // Infer the `RootState` and `AppDispatch` types from the store itself

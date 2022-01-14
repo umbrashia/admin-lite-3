@@ -22,3 +22,6 @@ export const commonDashboardSlice = createSlice({
 
     }
 });
+
+export const {doToggle,setMobileMenuDisplay} =commonDashboardSlice.actions;
+export default commonDashboardSlice.reducer;

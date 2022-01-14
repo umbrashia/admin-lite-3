@@ -3,15 +3,23 @@ import { faBars, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { FC, ReactElement } from "react";
 import { Container, Navbar } from "react-bootstrap";
+import { useDispatch } from 'react-redux';
+import { doToggle } from '../../store/slices/commonDashboardSlice';
+
 
 const MyHeaderNavigation: FC<{ [key: keyof any]: any }> = (props: any): ReactElement => {
+
+    const dispatch = useDispatch();
+
     return (<React.Fragment>
-        <Navbar className="header-nav" bg="dark" variant="dark" fixed="top">
+        <Navbar className="header-nav" bg="dark" variant="dark" fixed="top"  >
             {/* fixed="top" */}
             <Container fluid>
-                <Navbar.Brand href="">
+                <Navbar.Toggle bsPrefix={'ss'} onClick={() => dispatch(doToggle())}>
                     <FontAwesomeIcon icon={faBars} />{' '}
-                </Navbar.Brand>
+
+                </Navbar.Toggle>
+
                 <Navbar.Brand href="">
                     <img
                         alt=""
