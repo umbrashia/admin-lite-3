@@ -1,9 +1,11 @@
 import { faTachometerAlt, faUserAstronaut } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { FC, ReactElement } from "react";
+import React, { FC, ReactElement, useEffect } from "react";
 import { Accordion, Card, ListGroup } from "react-bootstrap";
-import { NavLink, useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { NavLink, useHistory, useLocation } from "react-router-dom";
 import profileDummyImg from '../../assets/dist/img/user4-128x128.jpg';
+import { setMobileMenuDisplay } from "../../store/slices/commonDashboardSlice";
 
 export interface IMyNav {
     menuHeadTitle: string;
@@ -26,10 +28,20 @@ const MyRightNavigation: FC<{ [key: keyof any]: any }> = (props: any): ReactElem
         }
     ];
     const infoNav = useLocation();
+    const history=useHistory();
+    const dispatch=useDispatch();
+    
     const superMenuActive:string=myNav.findIndex(
         sub => sub.subMenuItems.map(to=>to.to).indexOf(infoNav.pathname)!==-1
     ).toString();
 
+    useEffect(() => {
+        history.listen((obj)=>{
+            if(window.innerWidth<=576)
+            // alert("check");
+                dispatch(setMobileMenuDisplay(false));    
+        })
+      }, [dispatch,history]);
 
     return (<React.Fragment>
         <Card >

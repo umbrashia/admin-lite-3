@@ -15,10 +15,10 @@ const MyHeaderNavigation: FC<{ [key: keyof any]: any }> = (props: any): ReactEle
         <Navbar className="header-nav" bg="dark" variant="dark" fixed="top"  >
             {/* fixed="top" */}
             <Container fluid>
-                <Navbar.Toggle bsPrefix={'ss'} onClick={() => dispatch(doToggle())}>
-                    <FontAwesomeIcon icon={faBars} />{' '}
 
-                </Navbar.Toggle>
+                <Navbar.Brand className="btn btn-link d-md-none d-lg-none d-xl-none" as={"button"} onClick={() => dispatch(doToggle())}>
+                    <FontAwesomeIcon icon={faBars} />{' '}
+                </Navbar.Brand>
 
                 <Navbar.Brand href="">
                     <img
