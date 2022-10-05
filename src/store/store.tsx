@@ -1,9 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit"
 import commonDashboardReducer from "./slices/commonDashboardSlice"
+import fruitMartReducer from "./slices/fruitMartSlice"
+
 
 export const store:any = configureStore({
     reducer: {
-      commonDashboard:commonDashboardReducer
+      commonDashboard:commonDashboardReducer,
+      fruitMart:fruitMartReducer
     },
   })
   

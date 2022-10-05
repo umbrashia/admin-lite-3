@@ -1,7 +1,7 @@
 import React, { Suspense, lazy } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { Route, Switch } from 'react-router-dom';
-
+import mainLoaderImage from '../../assets/dist/img/light-loader.gif';
 import MyRightNavigation from '../../containers/sections/MyRightNavigation';
 import MyHeaderNavigation from '../../containers/sections/MyHeaderNavigation';
 import { RootState } from '../../store/store';
@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import { ICommonDashboard, setMobileMenuDisplay } from '../../store/slices/commonDashboardSlice';
 const Home = lazy<any>(() => import("../home/Home"));
 const UserList = lazy<any>(() => import("../user/UserList"));
+const FruitMart = lazy<any>(() => import("../fruitMart/FruitMart"));
 
 
 
@@ -51,13 +52,16 @@ class Dashboard extends React.Component<{ localCommonDashboardData: ICommonDashb
                         )}
                         {(this.state.notMobile || this.props.localCommonDashboardData.mobileMenuToggle!==true) && (
                             <Col lg={10} md={9} sm={8} style={{ height: this.state.height, overflow: "auto", marginTop: this.state.topHeaderHeight }}>
-                                <Suspense fallback={<span>loading</span>}>
+                                <Suspense fallback={<div className={'loader'}><img src={mainLoaderImage} alt="loader"/></div>}>
                                     <Switch>
                                         <Route exact path="/">
                                             <Home />
                                         </Route>
                                         <Route exact path="/users-list">
                                             <UserList />
+                                        </Route>
+                                        <Route exact path="/fruit-mart">
+                                            <FruitMart />
                                         </Route>
                                     </Switch>
                                 </Suspense>

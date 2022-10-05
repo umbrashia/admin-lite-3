@@ -130,6 +130,18 @@ div.col-xs-9 {
     margin-right: 10px;
 }
 
+.loader{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    width: 50px;
+    height: 37px;
+    z-index: 9999;
+    opacity: 0.9;
+    background: url('//upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Phi_fenomeni.gif/50px-Phi_fenomeni.gif') 
+                50% 50% no-repeat rgb(249,249,249);
+  }
+
 .login-form {
     width: 400px;
     margin: 50px auto;

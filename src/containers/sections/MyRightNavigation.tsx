@@ -19,29 +19,29 @@ const MyRightNavigation: FC<{ [key: keyof any]: any }> = (props: any): ReactElem
         {
             menuHeadTitle: "Dashboard",
             menueIcon: (<FontAwesomeIcon icon={faTachometerAlt} />),
-            subMenuItems: [{ title: "Home", to: "/" },{ title: "Matrix", to: "/matrix" },]
+            subMenuItems: [{ title: "Home", to: "/" }, { title: "Friut Mart", to: "/fruit-mart" },]
         },
         {
             menuHeadTitle: "User Management",
             menueIcon: (<FontAwesomeIcon icon={faUserAstronaut} />),
-            subMenuItems: [{ title: "User List", to: "/users-list" },{ title: "Jhon Wick", to: "/jhon" }]
+            subMenuItems: [{ title: "User List", to: "/users-list" }, { title: "Manage User", to: "/jhon" }]
         }
     ];
     const infoNav = useLocation();
-    const history=useHistory();
-    const dispatch=useDispatch();
-    
-    const superMenuActive:string=myNav.findIndex(
-        sub => sub.subMenuItems.map(to=>to.to).indexOf(infoNav.pathname)!==-1
+    const history = useHistory();
+    const dispatch = useDispatch();
+
+    const superMenuActive: string = myNav.findIndex(
+        sub => sub.subMenuItems.map(to => to.to).indexOf(infoNav.pathname) !== -1
     ).toString();
 
     useEffect(() => {
-        history.listen((obj)=>{
-            if(window.innerWidth<=576)
-            // alert("check");
-                dispatch(setMobileMenuDisplay(false));    
+        history.listen((obj) => {
+            if (window.innerWidth <= 576)
+                // alert("check");
+                dispatch(setMobileMenuDisplay(false));
         })
-      }, [dispatch,history]);
+    }, [dispatch, history]);
 
     return (<React.Fragment>
         <Card >
