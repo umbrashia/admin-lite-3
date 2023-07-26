@@ -15,7 +15,6 @@ const FruitMart: FC<{ [key: keyof any]: any }> = (props: any): ReactElement => {
   );
   let defaultSelected: string[],
     userSelection: string[] = [];
-  // let userEmail: string = "";
 
   const handleChangeDefaultSelection = (e: any) => {
     let value = Array.from(
